@@ -43,3 +43,43 @@ int main()
     cout<<key;
     return 0;
 }
+//using functions
+#include<bits/stdc++.h>
+using namespace std;
+int key(int a[],int n)
+{
+    int key=0;
+    for(int i=0;i<n;i++)
+    {
+        int LD=INT_MIN,SLD=INT_MIN;
+        while(a[i]>0)
+        {
+            int d=a[i]%10;
+            if(d>LD)
+            {
+                SLD=LD;
+                LD=d;
+            }
+            else if(d<LD && d>SLD)
+            {
+                SLD=d;
+            }
+            a[i]=a[i]/10;https://assets.grammarly.com/emoji/v1/1f913.svg
+        }
+        key=LD+SLD+key;
+    }
+    return key;
+}
+int main()
+{
+    int n;
+    cin>>n;
+    int a[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    int res=key(a,3);
+    cout<<res;
+    return 0;
+}
